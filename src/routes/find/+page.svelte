@@ -3,6 +3,7 @@
     import { page } from '$app/stores';
     import { get } from 'svelte/store';
 
+    // @ts-ignore
     const isActive = (path) => {
         const currentPage = get(page);
         return currentPage.url.pathname === path;
@@ -15,6 +16,7 @@
         { icon: 'register.svg', label: '물품 등록', link: '/insert/choose' }
     ];
 
+    // @ts-ignore
     const handleItemClick = (event, link) => {
         event.preventDefault(); 
         goto(link);
@@ -162,7 +164,7 @@
 <div class="container">
     <div class="header">
         찾았어요
-        <p>찾은 분실물을 확인해보세요.</p> 
+        <p>잃어버린 물건이 있는지 확인해보세요.</p> 
     </div>
     <div class="notice"></div>
     
