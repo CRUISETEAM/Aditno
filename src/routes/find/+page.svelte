@@ -1,9 +1,11 @@
 <script>
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
+    import { get } from 'svelte/store';
 
     const isActive = (path) => {
-        return $page.url.pathname === path;
+        const currentPage = get(page);
+        return currentPage.url.pathname === path;
     };
 
     const navItems = [
@@ -12,12 +14,17 @@
         { icon: 'here.svg', label: '여기있어요', link: '/here' },
         { icon: 'register.svg', label: '물품 등록', link: '/insert/choose' }
     ];
+
+    const handleItemClick = (event, link) => {
+        event.preventDefault(); 
+        goto(link);
+    };
 </script>
 
 <style>
     .container {
         width: 375px;
-        height: 900px; 
+        height: 812px; 
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -159,7 +166,7 @@
     </div>
     <div class="notice"></div>
     
-    <a class="list-item" href="find">
+    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/find/content')}>
         <img src="appjam.svg" alt="" class="item-image">
         <div class="item-content">
             <div class="item-title">에어팟 주웠어요.</div>
@@ -167,7 +174,7 @@
         </div>
     </a>
 
-    <a class="list-item" href="find">
+    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/find/content')}>
         <img src="appjam.svg" alt="" class="item-image">
         <div class="item-content">
             <div class="item-title">에어팟 주웠어요.</div>
@@ -175,7 +182,7 @@
         </div>
     </a>
 
-    <a class="list-item" href="find">
+    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/find/content')}>
         <img src="appjam.svg" alt="" class="item-image">
         <div class="item-content">
             <div class="item-title">에어팟 주웠어요.</div>
@@ -183,7 +190,7 @@
         </div>
     </a>
 
-    <a class="list-item" href="find">
+    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/find/content')}>
         <img src="appjam.svg" alt="" class="item-image">
         <div class="item-content">
             <div class="item-title">에어팟 주웠어요.</div>
