@@ -162,7 +162,7 @@
 <div class="container">
     <div class="header">
         찾았어요
-        <p>찾은 분실물을 확인해보세요.</p> 
+        <p>잃어버린 물건이 있는지 확인해보세요.</p> 
     </div>
     <div class="notice"></div>
     

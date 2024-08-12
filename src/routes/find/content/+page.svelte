@@ -4,7 +4,7 @@
     };
 
     const navigateToPap = () => {
-        window.location.href = "/find/pap"; // Navigate to /find/pap
+        window.location.href = "/find/pap"; 
     };
 </script>
 
