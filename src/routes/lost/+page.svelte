@@ -177,8 +177,8 @@
     <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
         <img src="appjam.svg" alt="" class="item-image">
         <div class="item-content">
-            <div class="item-title">잃어버렸어요.</div>
-            <div class="item-subtitle">2학년 4반 신희성</div>
+            <div class="item-title">내 지갑 돌려내란말이야.</div>
+            <div class="item-subtitle">2학년 2반 조윤서</div>
         </div>
     </a>
 
