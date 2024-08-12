@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
     import { get } from 'svelte/store';
@@ -15,6 +17,7 @@
         { icon: 'register.svg', label: '물품 등록', link: '/insert/choose' }
     ];
 
+    // @ts-ignore
     const handleItemClick = (event, link) => {
         event.preventDefault(); 
         goto(link);

@@ -3,6 +3,7 @@
     import { page } from '$app/stores';
     import { get } from 'svelte/store';
 
+    // @ts-ignore
     const isActive = (path) => {
         const currentPage = get(page);
         return currentPage.url.pathname === path;
@@ -15,6 +16,7 @@
         { icon: 'register.svg', label: '물품 등록', link: '/insert/choose' }
     ];
 
+    // @ts-ignore
     const handleItemClick = (event, link) => {
         event.preventDefault(); 
         goto(link);
