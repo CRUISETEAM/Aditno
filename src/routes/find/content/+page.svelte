@@ -2,6 +2,10 @@
     const goBack = () => {
         history.back();
     };
+
+    const navigateToPap = () => {
+        window.location.href = "/find/pap"; // Navigate to /find/pap
+    };
 </script>
 
 <style>
@@ -96,6 +100,7 @@
         font-weight: 600;
         border-radius: 8px;
         cursor: pointer;
+        border: none; 
     }
 </style>
 
@@ -118,8 +123,8 @@
     </div>
 
     <div class="button-container">
-        <div class="button">
+        <button type="button" on:click={navigateToPap} class="button">
             내꺼예요
-        </div>
+        </button>
     </div>
 </div>
