@@ -1,4 +1,7 @@
 <script>
+    function handleSubmit() {
+        window.location.href = "/find";
+    }
 </script>
 
 <style>
@@ -113,5 +116,5 @@
         </div>
     </div>
 
-    <button class="button">완료하기</button>
+    <button class="button" on:click={handleSubmit}>완료하기</button>
 </div>
