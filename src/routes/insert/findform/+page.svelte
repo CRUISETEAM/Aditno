@@ -1,5 +1,4 @@
 <script>
-    // 필요한 스크립트가 있으면 여기에 추가하세요.
 </script>
 
 <style>
@@ -94,7 +93,7 @@
       border-radius: 8px;
       cursor: pointer;
       text-align: center;
-      margin-top: 50px; /* 버튼을 아래로 조금 내림 */
+      margin-top: 50px; 
     }
 </style>
 
