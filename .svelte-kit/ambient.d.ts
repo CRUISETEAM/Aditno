@@ -38,7 +38,6 @@ declare module '$env/static/private' {
 	export const npm_config_noproxy: string;
 	export const HOME: string;
 	export const CHROME_DESKTOP: string;
-	export const OLDPWD: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const DESKTOP_SESSION: string;
 	export const NVM_BIN: string;
@@ -54,6 +53,7 @@ declare module '$env/static/private' {
 	export const npm_config_userconfig: string;
 	export const npm_config_local_prefix: string;
 	export const SYSTEMD_EXEC_PID: string;
+	export const IM_CONFIG_CHECK_ENV: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
 	export const COLORTERM: string;
 	export const GIO_LAUNCHED_DESKTOP_FILE_PID: string;
@@ -80,7 +80,6 @@ declare module '$env/static/private' {
 	export const npm_package_name: string;
 	export const XDG_MENU_PREFIX: string;
 	export const LC_ADDRESS: string;
-	export const GNOME_TERMINAL_SCREEN: string;
 	export const GNOME_SETUP_DISPLAY: string;
 	export const XDG_RUNTIME_DIR: string;
 	export const GDK_BACKEND: string;
@@ -93,7 +92,6 @@ declare module '$env/static/private' {
 	export const XAUTHORITY: string;
 	export const LS_COLORS: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
-	export const GNOME_TERMINAL_SERVICE: string;
 	export const TERM_PROGRAM: string;
 	export const npm_lifecycle_script: string;
 	export const SSH_AGENT_LAUNCHER: string;
@@ -104,7 +102,6 @@ declare module '$env/static/private' {
 	export const npm_package_version: string;
 	export const npm_lifecycle_event: string;
 	export const QT_ACCESSIBILITY: string;
-	export const NO_AT_BRIDGE: string;
 	export const GDMSESSION: string;
 	export const LC_MEASUREMENT: string;
 	export const GJS_DEBUG_OUTPUT: string;
@@ -126,7 +123,6 @@ declare module '$env/static/private' {
 	export const LC_NUMERIC: string;
 	export const npm_command: string;
 	export const LC_PAPER: string;
-	export const VTE_VERSION: string;
 	export const INIT_CWD: string;
 	export const EDITOR: string;
 	export const NODE_ENV: string;
@@ -173,7 +169,6 @@ declare module '$env/dynamic/private' {
 		npm_config_noproxy: string;
 		HOME: string;
 		CHROME_DESKTOP: string;
-		OLDPWD: string;
 		TERM_PROGRAM_VERSION: string;
 		DESKTOP_SESSION: string;
 		NVM_BIN: string;
@@ -189,6 +184,7 @@ declare module '$env/dynamic/private' {
 		npm_config_userconfig: string;
 		npm_config_local_prefix: string;
 		SYSTEMD_EXEC_PID: string;
+		IM_CONFIG_CHECK_ENV: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
 		COLORTERM: string;
 		GIO_LAUNCHED_DESKTOP_FILE_PID: string;
@@ -215,7 +211,6 @@ declare module '$env/dynamic/private' {
 		npm_package_name: string;
 		XDG_MENU_PREFIX: string;
 		LC_ADDRESS: string;
-		GNOME_TERMINAL_SCREEN: string;
 		GNOME_SETUP_DISPLAY: string;
 		XDG_RUNTIME_DIR: string;
 		GDK_BACKEND: string;
@@ -228,7 +223,6 @@ declare module '$env/dynamic/private' {
 		XAUTHORITY: string;
 		LS_COLORS: string;
 		VSCODE_GIT_IPC_HANDLE: string;
-		GNOME_TERMINAL_SERVICE: string;
 		TERM_PROGRAM: string;
 		npm_lifecycle_script: string;
 		SSH_AGENT_LAUNCHER: string;
@@ -239,7 +233,6 @@ declare module '$env/dynamic/private' {
 		npm_package_version: string;
 		npm_lifecycle_event: string;
 		QT_ACCESSIBILITY: string;
-		NO_AT_BRIDGE: string;
 		GDMSESSION: string;
 		LC_MEASUREMENT: string;
 		GJS_DEBUG_OUTPUT: string;
@@ -261,7 +254,6 @@ declare module '$env/dynamic/private' {
 		LC_NUMERIC: string;
 		npm_command: string;
 		LC_PAPER: string;
-		VTE_VERSION: string;
 		INIT_CWD: string;
 		EDITOR: string;
 		NODE_ENV: string;
