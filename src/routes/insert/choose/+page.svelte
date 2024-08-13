@@ -2,31 +2,34 @@
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
 
-    // @ts-ignore
     /**
      * @type {string | null}
      */
     let selectedOption = null;
 
-    // @ts-ignore
+    /**
+     * @param {string | null} option
+     */
     function handleIconClick(option) {
         selectedOption = option;
     }
 
     function handleSubmit() {
-        // @ts-ignore
         if (!selectedOption) {
             alert('이미지를 선택해 주세요.');
         } else {
             if (selectedOption === '아이') {
-                goto('/child/auth/signup');
+                goto('/insert/findform');
             } else if (selectedOption === '부모') {
-                goto('/parent/auth/signup');
+                goto('/insert/lostform');
             }
         }
     }
 
-    // @ts-ignore
+    /**
+     * @param {KeyboardEvent & { currentTarget: EventTarget & HTMLButtonElement; }} event
+     * @param {string | null} option
+     */
     function handleKeyDown(event, option) {
         if (event.key === 'Enter' || event.key === ' ') {
             handleIconClick(option);
@@ -56,16 +59,16 @@
 
     .header {
         text-align: left;
-        margin-bottom: 20px; /* 위로 올리기 위해 줄임 */
+        margin-bottom: 20px;
         width: 100%;
         padding-left: 85px;
-        padding-top: 20px; /* 내용 위로 올리기 위해 추가 */
+        padding-top: 20px;
     }
 
     .header h2 {
         font-size: 28px;
         font-weight: 700;
-        margin: 5px 0; /* 위로 올리기 위해 줄임 */
+        margin: 5px 0;
     }
 
     .header p {
@@ -77,7 +80,7 @@
     .icon-container {
         display: flex;
         align-items: center;
-        margin-bottom: 40px; /* 전체적으로 위로 올리기 위해 추가 */
+        margin-bottom: 40px;
     }
 
     .icon {
@@ -89,7 +92,7 @@
         flex-direction: column;
         align-items: center;
         outline: none;
-        margin: 0 40px; /* 이미지 사이의 간격을 늘림 */
+        margin: 0 40px;
     }
 
     .icon img {
@@ -123,7 +126,7 @@
         font-weight: 600;
         cursor: pointer;
         position: absolute;
-        bottom: 120px; /* 버튼을 조금 위로 올리기 위해 변경 */
+        bottom: 120px;
         display: flex;
         align-items: center;
         justify-content: center;
