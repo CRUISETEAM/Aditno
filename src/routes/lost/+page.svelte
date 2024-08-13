@@ -27,7 +27,7 @@
 <style>
     .container {
         width: 375px;
-        height: 812px; 
+        height: 890px; 
         display: flex;
         flex-direction: column;
         align-items: center;
