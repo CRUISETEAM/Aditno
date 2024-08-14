@@ -1,24 +1,29 @@
 <script>
-// @ts-nocheck
-
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
     import { get } from 'svelte/store';
 
-    const isActive = (path) => {
+    const isActive = (/** @type {string} */ path) => {
         const currentPage = get(page);
         return currentPage.url.pathname === path;
     };
 
+    let currentTab = 'find';
+
     const navItems = [
-        { icon: 'found.svg', label: '찾았어요', link: '/find' },
-        { icon: 'lost.svg', label: '잃어버렸어요', link: '/lost' },
-        { icon: 'here.svg', label: '여기있어요', link: '/here' },
-        { icon: 'register.svg', label: '물품 등록', link: '/insert/choose' }
+        { label: '찾았어요', id: 'find', path: '/find' },
+        { label: '잃어버렸어요', id: 'lost', path: '/lost' },
     ];
 
-    // @ts-ignore
-    const handleItemClick = (event, link) => {
+    const handleTabClick = (/** @type {string} */ tabId) => {
+        const selectedItem = navItems.find(item => item.id === tabId);
+        if (selectedItem) {
+            goto(selectedItem.path);
+            currentTab = tabId;
+        }
+    };
+
+    const handleItemClick = (/** @type {MouseEvent & { currentTarget: EventTarget & HTMLAnchorElement; }} */ event, /** @type {string | URL} */ link) => {
         event.preventDefault(); 
         goto(link);
     };
@@ -27,44 +32,71 @@
 <style>
     .container {
         width: 375px;
-        height: 890px; 
+        height: 812px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start; 
+        position: relative;
         background-color: #F3F4F6;
         font-family: 'Pretendard', sans-serif;
-        margin: 0 auto;
+        margin: 30px auto 0;
         overflow: hidden;
         border-radius: 32px;
-        padding: 20px;
-        position: relative;
+        padding-top: 20px; 
     }
 
     .header {
         text-align: left;
         width: 100%;
-        margin-bottom: 20px;
-        padding-top: 60px;
+        margin-bottom: 15px; 
         font-size: 28px;
         font-weight: 700;
         padding-left: 42px;
-    }
-    .header p {
-        color: #898989;
-        font-size: 14px;
-        margin: 8px 0;
-        font-weight: 200;
+        margin-top: 70px;
+        margin-left: 30px;
     }
 
-    .notice {
-        width: 330px;
-        height: 174px;
-        background-image: url('appjam.svg');
-        background-size: cover;
-        background-position: center;
-        border-radius: 8px;
-        margin-bottom: 20px;
+    .tabs {
+        display: flex;
+        justify-content: flex-start; 
+        width: 180px; 
+        margin-bottom: 10px;
+        padding-left: 42px; 
+        margin-left: -160px;
+    }
+
+    .tab-item {
+        padding: 10px 0;
+        text-align: left;
+        font-size: 22px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        margin-right: 16px; 
+        white-space: nowrap; 
+        color: #808080; 
+    }
+
+    .tab-item.active {
+        border-bottom: 4px solid #6184CA;
+        font-weight: 700;
+        color: #6184CA; 
+    }
+
+    .register-button {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        margin-right: 200px;
+        margin-bottom: 15px; 
+        color: #6184CA;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    .register-button img {
+        margin-right: 8px;
     }
 
     .list-item {
@@ -80,20 +112,8 @@
         color: inherit;
         cursor: pointer;
         position: relative; 
-    }
-
-    .list-item:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        bottom: -4px; 
-        left: 16px;
-        width: 296px;
-        height: 1px;
-        background-color: #DCDCDC;
-    }
-
-    .list-item:last-child::after {
-        content: none;
+        margin-top: 20px;
+        margin-left: 30px;
     }
 
     .item-image {
@@ -118,97 +138,41 @@
         font-size: 14px;
         color: #898989;
     }
-
-    .navbar {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #F3F4F6;
-        padding: 10px 0;
-        width: 100%;
-        max-width: 375px;
-        position: fixed;
-        bottom: 10px; 
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 0 0 32px 32px;
-    }
-
-    .navbar-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        font-size: 12px;
-    }
-
-    .navbar-item img {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 2px;
-        filter: grayscale(100%); 
-    }
-
-    .navbar-item.active img {
-        filter: none; 
-    }
-
-    .navbar-item.active span {
-        color: #FF6F00; 
-    }
-
-    .navbar-item span {
-        color: #333;
-    }
 </style>
 
 <div class="container">
     <div class="header">
-        잃어버렸어요
-        <p>잃어버린 분실물을 알려보세요.</p> 
+        홈
     </div>
-    <div class="notice"></div>
-    
-    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
-        <img src="appjam.svg" alt="" class="item-image">
-        <div class="item-content">
-            <div class="item-title">에어팟 잃어버렸어요.</div>
-            <div class="item-subtitle">2학년 4반 신희성</div>
-        </div>
+
+    <div class="tabs">
+        {#each navItems as item}
+           
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div 
+                class="tab-item {currentTab === item.id ? 'active' : ''}" 
+                on:click={() => handleTabClick(item.id)}
+            >
+                {item.label}
+            </div>
+        {/each}
+    </div>
+
+    <a class="register-button" href="/insert/choose" on:click={(event) => handleItemClick(event, '/insert/choose')}>
+        <img src="pencil.svg" alt="Pencil Icon" />
+        등록하기
     </a>
 
-    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
-        <img src="appjam.svg" alt="" class="item-image">
-        <div class="item-content">
-            <div class="item-title">내 지갑 돌려내란말이야.</div>
-            <div class="item-subtitle">2학년 2반 조윤서</div>
-        </div>
-    </a>
 
-    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
-        <img src="appjam.svg" alt="" class="item-image">
-        <div class="item-content">
-            <div class="item-title">에어팟 잃어버렸어요.</div>
-            <div class="item-subtitle">2학년 4반 신희성</div>
-        </div>
-    </a>
 
-    <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
-        <img src="appjam.svg" alt="" class="item-image">
-        <div class="item-content">
-            <div class="item-title">에어팟 잃어버렸어요.</div>
-            <div class="item-subtitle">2학년 4반 신희성</div>
-        </div>
-    </a>
-
-    <div class="spacer"></div>
-</div>
-
-<nav class="navbar">
-    {#each navItems as item}
-        <a class="navbar-item {isActive(item.link) ? 'active' : ''}" href={item.link}>
-            <img src={item.icon} alt={item.label} />
-            <span>{item.label}</span>
+    {#if currentTab === 'lost'}
+        <a class="list-item" href="/lost/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
+            <img src="appjam.svg" alt="아이템 이미지" class="item-image">
+            <div class="item-content">
+                <div class="item-title">에어팟 잃어버렸어요.</div>
+                <div class="item-subtitle">2학년 4반 신희성</div>
+            </div>
         </a>
-    {/each}
-</nav>
+    {/if}
+</div>
