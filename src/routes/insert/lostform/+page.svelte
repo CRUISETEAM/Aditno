@@ -1,10 +1,8 @@
 <script>
-  // SvelteKit의 내장 `goto` 함수 가져오기
   import { goto } from '$app/navigation';
 
-  // 제출 핸들러 함수
   function handleSubmit() {
-    goto('/lost'); // SvelteKit의 goto 함수를 사용하여 페이지 이동
+    goto('/lost'); 
   }
 </script>
 
