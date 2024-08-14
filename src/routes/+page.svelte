@@ -2,7 +2,7 @@
     import { goto } from '$app/navigation';
 
     function handleSignupClick() {
-        goto('find'); 
+        goto('section'); 
     }
 </script>
 
@@ -20,19 +20,20 @@
     margin: 0 auto;
     overflow: hidden;
     border-radius: 32px;
+    margin: 40px auto 0; 
 }
 
 .logo {
     width: 140px;
     height: auto;
     position: absolute;
-    top: 350px;
+    top: 300px;
 }
 
 .signup-button {
     width: 310px;
     height: 50px;
-    background-color: #F3A941;
+    background-color: #6184CA;
     border: none;
     border-radius: 8px;
     color: #FFFFFF;
@@ -47,16 +48,7 @@
     justify-content: center;
 }
 
-.signup-button:hover {
-    background-color: #f0bb71;
-}
 
-.footer {
-    position: absolute;
-    bottom: 60px;
-    font-size: 14px;
-    color: #808080;
-}
 </style>
 
 <div class="container"> 
@@ -64,7 +56,6 @@
     <button class="signup-button" on:click={handleSignupClick}>
         회원가입
     </button>
-    <div class="footer">©CRUISE</div> 
 </div>
 
 

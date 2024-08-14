@@ -11,13 +11,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    position: relative;
     background-color: #F3F4F6;
     font-family: 'Pretendard', sans-serif;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 32px;
-    padding: 20px;
-    position: relative;
+    margin: 40px auto 0; 
   }
 
   .image {
@@ -36,9 +37,12 @@
   }
 
   .button {
-    width: 100%;
-    padding: 16px 0;
-    background-color: #F3A941;
+    width: 310px;
+    height: 50px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #6184CA;
     color: white;
     text-align: center;
     font-size: 20px;

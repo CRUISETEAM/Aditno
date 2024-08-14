@@ -36,6 +36,10 @@
         }
     }
 
+    function goBack() {
+        goto('/find');
+    }
+
     onMount(() => {
         selectedOption = null;
     });
@@ -48,13 +52,31 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         position: relative;
         background-color: #F3F4F6;
         font-family: 'Pretendard', sans-serif;
         margin: 0 auto;
         overflow: hidden;
         border-radius: 32px;
+        margin: 40px auto 0; 
+    }
+
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        margin-top: 50px;
+        margin-left: 18px;
+    }
+
+    .back-button img {
+        width: 20px;
+        height: 20px;
     }
 
     .header {
@@ -62,7 +84,7 @@
         margin-bottom: 20px;
         width: 100%;
         padding-left: 85px;
-        padding-top: 20px;
+        padding-top: 240px;
     }
 
     .header h2 {
@@ -117,7 +139,7 @@
     .next-button {
         width: 310px;
         height: 50px;
-        background-color: #F3A941;
+        background-color: #6184CA;
         border: none;
         border-radius: 8px;
         color: #FFFFFF;
@@ -135,6 +157,9 @@
 </style>
 
 <div class="container">
+    <button class="back-button" on:click={goBack}>
+        <img src="/arrow.svg" alt="뒤로 가기" />
+    </button>
     <div class="header">
         <h2>등록</h2>
         <p>아래에서 등록 목록을 선택해주세요.</p>

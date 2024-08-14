@@ -29,7 +29,7 @@ export const dictionary = {
 		"/insert/lostform": [9],
 		"/lost": [10],
 		"/lost/content": [11],
-		"/nav": [12]
+		"/section": [12]
 	};
 
 export const hooks = {
