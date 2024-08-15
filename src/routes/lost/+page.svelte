@@ -3,12 +3,7 @@
     import { page } from '$app/stores';
     import { get } from 'svelte/store';
 
-    const isActive = (/** @type {string} */ path) => {
-        const currentPage = get(page);
-        return currentPage.url.pathname === path;
-    };
-
-    let currentTab = 'find';
+    let currentTab = 'lost';
 
     const navItems = [
         { label: '찾았어요', id: 'find', path: '/find' },
@@ -18,8 +13,8 @@
     const handleTabClick = (/** @type {string} */ tabId) => {
         const selectedItem = navItems.find(item => item.id === tabId);
         if (selectedItem) {
-            goto(selectedItem.path);
-            currentTab = tabId;
+            currentTab = tabId;  // Update the tab state first
+            goto(selectedItem.path);  // Then navigate to the new path
         }
     };
 
@@ -147,7 +142,6 @@
 
     <div class="tabs">
         {#each navItems as item}
-           
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-static-element-interactions -->
             <div 
@@ -164,15 +158,12 @@
         등록하기
     </a>
 
-
-
-    {#if currentTab === 'lost'}
-        <a class="list-item" href="/lost/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
-            <img src="appjam.svg" alt="아이템 이미지" class="item-image">
-            <div class="item-content">
-                <div class="item-title">에어팟 잃어버렸어요.</div>
-                <div class="item-subtitle">2학년 4반 신희성</div>
-            </div>
-        </a>
-    {/if}
+    <a class="list-item" href="/lost/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
+        <img src="appjam.svg" alt="아이템 이미지" class="item-image">
+        <div class="item-content">
+            <div class="item-title">에어팟 잃어버렸어요.</div>
+            <div class="item-subtitle">2학년 4반 신희성</div>
+        </div>
+    </a>
+    
 </div>
