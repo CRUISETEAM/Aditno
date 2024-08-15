@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
 
-    let messages = ["src에서 봤어요", "저두여"];
+    let messages = ["src에서 봤어요", "저두여", "다음 메시지", "그리고 또 하나", "마지막 메시지"];
     let newMessage = "";
 
     function sendMessage() {
@@ -121,18 +121,29 @@
         padding: 16px;
         display: flex;
         flex-direction: column;
-        margin-bottom: 220px;
-        margin-left: 74px;
+        margin-bottom: 80px;
+        position: relative;
     }
 
     .message-list {
-        max-height: 150px;
-        overflow-y: auto;
+        max-height: 210px; /* Set the max height to show up to 3 messages */
+        overflow-y: auto; /* Add vertical scroll for overflow messages */
+        display: flex;
+        flex-direction: column;
         padding-bottom: 10px;
+        margin-bottom: 80px;
+        margin-left: 32px;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer and Edge */
     }
+
+    .message-list::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+
     .message {
-        width: 130px;
-        height: 38px;
+        width: 140px;
+        height: 44px; /* Updated height */
         padding: 8px;
         border-radius: 25px 25px 25px 0px; 
         background-color: #6184CA;
@@ -144,18 +155,19 @@
         align-items: center; 
         justify-content: center; 
         text-align: center; 
-}
+    }
 
     .message-input {
         position: absolute;
-        top: 50%;
+        bottom: 0;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
         width: 320px;
-        height: 40px;
+        height: 44px;
         display: flex;
         align-items: center;
-        margin-top: 440px;
+        background-color: #F3F4F6;
+        border-top: 1px solid #e5e7eb;
     }
 
     .message-input input {
@@ -177,7 +189,6 @@
         background: none;
         border: none;
         cursor: pointer;
-        
     }
 
     .message-input img {
