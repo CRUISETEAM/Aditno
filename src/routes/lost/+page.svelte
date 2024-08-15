@@ -13,8 +13,8 @@
     const handleTabClick = (/** @type {string} */ tabId) => {
         const selectedItem = navItems.find(item => item.id === tabId);
         if (selectedItem) {
-            currentTab = tabId;  // Update the tab state first
-            goto(selectedItem.path);  // Then navigate to the new path
+            currentTab = tabId;  
+            goto(selectedItem.path);  
         }
     };
 
