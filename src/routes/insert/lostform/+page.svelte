@@ -43,7 +43,7 @@
   label {
       display: block;
       font-size: 18px;
-      font-weight: 300;
+      font-weight: 500;
       color: #000;
       margin-bottom: 10px;
   }
