@@ -26,14 +26,6 @@
     margin: 40px auto 0; 
 }
 
-/* .top-icon {
-    width: 48px;
-    height: 36px;
-    position: absolute; 
-    top: 70px; 
-    left: 30px; 
-} */
-
 .card {
     background-color: white;
     border-radius: 8px;
@@ -87,8 +79,6 @@
 </style>
 
 <div class="container">
-    <!-- <img src="minilogo.svg" alt="Top Icon" class="top-icon"> -->
-
     <div class="card">
         <div class="card-content">
             <div class="card-title">물건을 찾으시나요?</div>
@@ -97,7 +87,7 @@
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="navigate-button" on:click={() => handleNavigate('/find')}>이동하기</div>
         </div>
-        <img src="section1.svg" alt="Emoji1">
+        <img src="section1.svg" alt="Emoji1" loading="lazy"> <!-- Lazy Loading 적용 -->
     </div>
 
     <div class="card">
@@ -108,6 +98,6 @@
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="navigate-button" on:click={() => handleNavigate('/lost')}>이동하기</div>
         </div>
-        <img src="section2.svg" alt="Emoji2">
+        <img src="section2.svg" alt="Emoji2" loading="lazy"> <!-- Lazy Loading 적용 -->
     </div>
 </div>
