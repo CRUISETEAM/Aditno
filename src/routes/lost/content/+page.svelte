@@ -22,6 +22,14 @@
         messageList.scrollTop = messageList.scrollHeight;
     }
 
+    // @ts-ignore
+    function handleKeyDown(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent the default behavior (like form submission or new line)
+            sendMessage();
+        }
+    }
+
     onMount(() => {
         scrollToBottom();
     });
@@ -90,6 +98,13 @@
         margin-left: -128px;
     }
 
+    .subtitle {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        margin-left: -252px;
+    }
+
     .content {
         padding: 16px;
         width: 100%;
@@ -97,7 +112,7 @@
         flex-direction: column;
         align-items: center;
         flex-grow: 1;
-        overflow-y: auto;
+        overflow-y: hidden; 
     }
 
     .content-text {
@@ -107,13 +122,6 @@
         max-width: 300px;
         text-align: left;
         margin-bottom: 12px;
-    }
-
-    .subtitle {
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 12px;
-        margin-left: -252px;
     }
 
     .chat-container {
@@ -126,24 +134,24 @@
     }
 
     .message-list {
-        max-height: 210px; /* Set the max height to show up to 3 messages */
-        overflow-y: auto; /* Add vertical scroll for overflow messages */
+        max-height: 210px; 
+        overflow-y: auto; 
         display: flex;
         flex-direction: column;
         padding-bottom: 10px;
         margin-bottom: 80px;
         margin-left: 32px;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* Internet Explorer and Edge */
+        scrollbar-width: none; 
+        -ms-overflow-style: none; 
     }
 
     .message-list::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, and Opera */
+        display: none;
     }
 
     .message {
         width: 140px;
-        height: 44px; /* Updated height */
+        height: 44px; 
         padding: 8px;
         border-radius: 25px 25px 25px 0px; 
         background-color: #6184CA;
@@ -221,7 +229,12 @@
             {/each}
         </div>
         <div class="message-input">
-            <input type="text" bind:value={newMessage} placeholder="여기에 메시지를 입력하세요." />
+            <input 
+                type="text" 
+                bind:value={newMessage} 
+                placeholder="여기에 메시지를 입력하세요." 
+                on:keydown={handleKeyDown}
+            />
             <button on:click={sendMessage}>
                 <img src="/send.svg" alt="Send" />
             </button>
