@@ -1,9 +1,14 @@
 <script>
+    import axios from 'axios';
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
-    import { get } from 'svelte/store';
+    import { onMount } from 'svelte';
 
     let currentTab = 'lost';
+    // @ts-ignore
+    /**
+   * @type {any[]}
+   */
+    let listData = []; 
 
     const navItems = [
         { label: '찾았어요', id: 'find', path: '/find' },
@@ -22,6 +27,19 @@
         event.preventDefault(); 
         goto(link);
     };
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('https://port-0-uhditknow-backend-m0z0hcc2db07a95e.sel4.cloudtype.app/lookingfor');
+            listData = response.data; 
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    onMount(() => {
+        fetchData();
+    });
 </script>
 
 <style>
@@ -62,15 +80,19 @@
     }
 
     .tab-item {
-        padding: 10px 0;
-        text-align: left;
-        font-size: 22px;
-        cursor: pointer;
-        border-bottom: 2px solid transparent;
-        margin-right: 16px; 
-        white-space: nowrap; 
-        color: #808080; 
-    }
+    padding: 10px 0;
+    text-align: left;
+    font-size: 22px;
+    cursor: pointer;
+    border: none; 
+    outline: none;
+    border-bottom: 2px solid transparent;
+    margin-right: 16px; 
+    white-space: nowrap; 
+    color: #808080; 
+    background: none;
+}
+
 
     .tab-item.active {
         border-bottom: 4px solid #6184CA;
@@ -136,20 +158,22 @@
 </style>
 
 <div class="container">
-    <div class="header">
-        홈
-    </div>
+    <div class="header">홈</div>
 
     <div class="tabs">
         {#each navItems as item}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div 
+            <button 
+                type="button"
                 class="tab-item {currentTab === item.id ? 'active' : ''}" 
                 on:click={() => handleTabClick(item.id)}
+                on:keydown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') handleTabClick(item.id);
+                }}
+                role="tab" 
+                aria-selected="{currentTab === item.id}"
             >
                 {item.label}
-            </div>
+            </button>
         {/each}
     </div>
 
@@ -158,12 +182,13 @@
         등록하기
     </a>
 
-    <a class="list-item" href="/lost/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
-        <img src="appjam.svg" alt="아이템 이미지" class="item-image">
-        <div class="item-content">
-            <div class="item-title">에어팟 잃어버렸어요.</div>
-            <div class="item-subtitle">2학년 4반 신희성</div>
-        </div>
-    </a>
-    
+    {#each listData as item}
+        <a class="list-item" href="/lost/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
+            <img src="{item.image}" alt="{item.title}" class="item-image">
+            <div class="item-content">
+                <div class="item-title">{item.title}</div>
+                <div class="item-subtitle">{item.subtitle}</div>
+            </div>
+        </a>
+    {/each}
 </div>
