@@ -183,7 +183,7 @@
     </a>
 
     {#each listData as item}
-        <a class="list-item" href="/lost/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
+        <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
             <img src="{item.image}" alt="{item.title}" class="item-image">
             <div class="item-content">
                 <div class="item-title">{item.title}</div>
