@@ -6,8 +6,8 @@
     let currentTab = 'lost';
     // @ts-ignore
     /**
-   * @type {any[]}
-   */
+    * @type {any[]}
+    */
     let listData = []; 
 
     const navItems = [
@@ -80,19 +80,18 @@
     }
 
     .tab-item {
-    padding: 10px 0;
-    text-align: left;
-    font-size: 22px;
-    cursor: pointer;
-    border: none; 
-    outline: none;
-    border-bottom: 2px solid transparent;
-    margin-right: 16px; 
-    white-space: nowrap; 
-    color: #808080; 
-    background: none;
-}
-
+        padding: 10px 0;
+        text-align: left;
+        font-size: 22px;
+        cursor: pointer;
+        border: none; 
+        outline: none;
+        border-bottom: 2px solid transparent;
+        margin-right: 16px; 
+        white-space: nowrap; 
+        color: #808080; 
+        background: none;
+    }
 
     .tab-item.active {
         border-bottom: 4px solid #6184CA;
