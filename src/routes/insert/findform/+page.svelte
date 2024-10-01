@@ -26,6 +26,7 @@
             .then(response => {
               console.log('Successfully submitted:', response.data);
               window.location.href = "/find";  
+              
             })
             .catch(error => {
               console.error('Error submitting form:', error);
@@ -76,6 +77,7 @@
           text-align: left;
           margin-top: 120px;
           margin-left: 94px;
+        
       }
     
       .input-container {
