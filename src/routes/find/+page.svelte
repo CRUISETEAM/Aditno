@@ -4,7 +4,6 @@
     import { onMount } from 'svelte';
 
     let currentTab = 'lost';
-    // @ts-ignore
     /**
    * @type {any[]}
    */
@@ -44,55 +43,39 @@
 
 <style>
     .container {
-        width: 375px;
-        height: 812px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: flex-start; 
-        position: relative;
-        background-color: #F3F4F6;
-        font-family: 'Pretendard', sans-serif;
-        margin: 30px auto 0;
-        overflow: hidden;
-        border-radius: 32px;
-        padding-top: 20px; 
+        align-items: center; /* 중앙 정렬 */
+        padding: 20px;
     }
 
     .header {
-        text-align: left;
         width: 100%;
         margin-bottom: 15px; 
         font-size: 28px;
         font-weight: 700;
-        padding-left: 42px;
-        margin-top: 70px;
-        margin-left: 30px;
+        text-align: left;
+        padding-left: 30px; /* 왼쪽에서 30px 이동 */
     }
 
     .tabs {
         display: flex;
-        justify-content: flex-start; 
-        width: 180px; 
+        justify-content: center; /* 중앙 정렬 */
+        width: 100%;
         margin-bottom: 10px;
-        padding-left: 42px; 
-        margin-left: -160px;
     }
 
     .tab-item {
-    padding: 10px 0;
-    text-align: left;
-    font-size: 22px;
-    cursor: pointer;
-    border: none; 
-    outline: none;
-    border-bottom: 2px solid transparent;
-    margin-right: 16px; 
-    white-space: nowrap; 
-    color: #808080; 
-    background: none;
-}
-
+        padding: 10px 16px;
+        font-size: 22px;
+        cursor: pointer;
+        border: none; 
+        outline: none;
+        border-bottom: 2px solid transparent;
+        margin: 0 8px; 
+        color: #808080; 
+        background: none;
+    }
 
     .tab-item.active {
         border-bottom: 4px solid #6184CA;
@@ -103,9 +86,7 @@
     .register-button {
         display: flex;
         align-items: center;
-        margin-top: 20px;
-        margin-right: 200px;
-        margin-bottom: 15px; 
+        margin: 20px 0;
         color: #6184CA;
         cursor: pointer;
         text-decoration: none;
@@ -119,18 +100,14 @@
     .list-item {
         display: flex;
         align-items: center;
-        background-color: #F3F4F6;
-        padding: 0 16px;
+        padding: 16px;
         border-radius: 8px;
-        margin-bottom: 8px;
-        width: 328px;
-        height: 90px;
+        margin: 10px 0;
+        width: 100%; /* 전체 폭 사용 */
+        max-width: 400px; /* 최대 폭 설정 */
         text-decoration: none;
         color: inherit;
-        cursor: pointer;
-        position: relative; 
-        margin-top: 20px;
-        margin-left: 30px;
+        background-color: transparent; /* 배경색 제거 */
     }
 
     .item-image {
@@ -153,7 +130,6 @@
 
     .item-subtitle {
         font-size: 14px;
-        color: #898989;
     }
 </style>
 
@@ -183,7 +159,7 @@
     </a>
 
     {#each listData as item}
-        <a class="list-item" href="/find/content" on:click={(event) => handleItemClick(event, '/lost/content')}>
+        <a class="list-item" href={`/find/content/${item.id}`} on:click={(event) => handleItemClick(event, `/find/content/${item.id}`)}>
             <img src="{item.image}" alt="{item.title}" class="item-image">
             <div class="item-content">
                 <div class="item-title">{item.title}</div>

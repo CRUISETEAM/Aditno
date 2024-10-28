@@ -35,9 +35,9 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
-	export const configsetroot: string;
 	export const DriverData: string;
 	export const EDITOR: string;
+	export const EFC_7892: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
 	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
@@ -105,6 +105,7 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const windir: string;
+	export const ZES_ENABLE_SYSMAN: string;
 }
 
 /**
@@ -145,9 +146,9 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
-		configsetroot: string;
 		DriverData: string;
 		EDITOR: string;
+		EFC_7892: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
 		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
@@ -215,6 +216,7 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_NODE: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		windir: string;
+		ZES_ENABLE_SYSMAN: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

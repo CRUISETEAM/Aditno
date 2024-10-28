@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "allowJs": true,
+      "jsx": "preserve",
+      "lib": ["DOM", "ESNext"]
+    },
+    "include": ["src/**/*", "svelte.config.js"],
+    "exclude": ["node_modules"]
+  }
+  

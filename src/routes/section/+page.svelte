@@ -10,72 +10,66 @@
 </script>
 
 <style>
-.container {
-    width: 375px;
-    height: 812px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: #F3F4F6;
-    font-family: 'Pretendard', sans-serif;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 32px;
-    margin: 40px auto 0; 
-}
+    .container {
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap; 
+        gap: 20px; 
+        padding: 20px; 
+        height: 100vh; 
+    }
 
-.card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 280px;
-    height: 200px;
-    margin-bottom: 20px;
-}
+    .card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 280px;
+        height: 200px;
+    }
 
-.card-content {
-    display: flex;
-    flex-direction: column;
-    max-width: 180px; 
-}
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        max-width: 180px; 
+    }
 
-.card-title {
-    font-size: 28px; 
-    font-weight: bold;
-    margin-bottom: 8px;
-    white-space: nowrap; 
-}
+    .card-title {
+        font-size: 32px; 
+        font-weight: bold;
+        margin-bottom: 8px;
+        white-space: nowrap; 
+    }
 
-.card-description {
-    font-size: 22px; 
-    color: #6184CA;
-    margin-bottom: 16px;
-    white-space: nowrap; 
-}
+    .card-description {
+        font-size: 20px; 
+        color: #6184CA;
+        margin-bottom: 16px;
+        white-space: nowrap; 
+        font-weight: 500;
+    }
 
-.card img {
-    width: 90px;
-    height: 90px;
-    margin-top: 20px; 
-}
+    .card img {
+        width: 100px;
+        height: 100px;
+        margin-top: 40px; 
+    }
 
-.navigate-button {
-    font-size: 18px;
-    color: #848484;
-    cursor: pointer;
-    display: flex;
-    align-items: right;
-}
+    .navigate-button {
+        font-size: 18px;
+        color: #848484;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
 
-.navigate-button::after {
-    content: '→';
-    margin-left: 4px;
-}
+    .navigate-button::after {
+        content: '→';
+        margin-left: 4px;
+    }
 </style>
 
 <div class="container">
@@ -87,7 +81,7 @@
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="navigate-button" on:click={() => handleNavigate('/find')}>이동하기</div>
         </div>
-        <img src="section1.svg" alt="Emoji1" loading="lazy"> <!-- Lazy Loading 적용 -->
+        <img src="section1.svg" alt="Emoji1" loading="lazy">
     </div>
 
     <div class="card">
@@ -98,6 +92,6 @@
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="navigate-button" on:click={() => handleNavigate('/lost')}>이동하기</div>
         </div>
-        <img src="section2.svg" alt="Emoji2" loading="lazy"> <!-- Lazy Loading 적용 -->
+        <img src="section2.svg" alt="Emoji2" loading="lazy"> 
     </div>
 </div>
